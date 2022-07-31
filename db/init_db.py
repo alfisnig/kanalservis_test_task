@@ -21,7 +21,7 @@ def create_orders_table():
            '    price_rub real NOT NULL,'
            '    delivery_time DATE NOT NULL,'
            '    delivery_completed boolean NOT NULL DEFAULT FALSE,'
-           '    creation_date DATE NOT NULL DEFAULT current_date,'
+           '    usd_exchange_rate real NOT NULL,'
            '    UNIQUE(order_num)'
            ')')
 
