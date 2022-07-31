@@ -11,11 +11,8 @@ from connection import get_work_sheet
 from db import check_orders, add_order, update_order
 
 
-def usd_to_rub(usd_price: float, date: datetime.date = None) -> int:
-    if date is None:
-        url = 'https://www.cbr.ru/scripts/XML_daily.asp?'
-    else:
-        url = f'https://www.cbr.ru/scripts/XML_daily.asp?date_req={date.strftime("%d/%m/%Y")}'
+def usd_to_rub(usd_price: float) -> int:
+    url = 'https://www.cbr.ru/scripts/XML_daily.asp?'
     request = requests.get(url)
     tree = etree.XML(request.content)
     valute_node = tree.xpath('//Valute[@ID = "R01235"]')[0]
@@ -40,12 +37,11 @@ def get_sheet_data(work_sheet: gspread.Worksheet, padding: int) -> pd.DataFrame:
     return dataframe
 
 
-def compare_and_update(sheet_row, db_row):
+def compare_and_update(sheet_row: tuple, db_row: tuple):
     if sheet_row != db_row:
         number, order_number, price, delivery_time = sheet_row
         delivery_time = string_to_date(delivery_time)
-        price_rub = usd_to_rub(float(price), date=delivery_time)
-        update_order(number, order_number, price, price_rub, delivery_time)
+        update_order(number, order_number, price, delivery_time)
 
 
 def sheet_monitoring():
