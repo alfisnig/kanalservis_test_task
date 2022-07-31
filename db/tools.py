@@ -4,11 +4,11 @@ from config import DB_NAME
 from .connection import get_cursor
 
 
-def add_order(number: int, order_number: int, price, price_rub, delivery_time: datetime.date):
+def add_order(number: int, order_number: int, price: float, price_rub: float, delivery_time: datetime.date):
     sql = ('INSERT INTO orders'
-           '    (number, order_num, price, price_rub, delivery_time)'
+           '    (number, order_num, price, price_rub, delivery_time, usd_exchange_rate)'
            'VALUES '
-           '    (%(number)s, %(order_num)s, %(price)s, %(price_rub)s, %(delivery_time)s)'
+           '    (%(number)s, %(order_num)s, %(price)s, %(price_rub)s, %(delivery_time)s, %(price_rub)s / %(price)s)'
            )
     values = {
         'number': number,
@@ -22,9 +22,9 @@ def add_order(number: int, order_number: int, price, price_rub, delivery_time: d
         cursor.execute(sql, values)
 
 
-def update_order(number: int, order_number: int, price, price_rub, delivery_time: datetime.date):
+def update_order(number: int, order_number: int, price: float, delivery_time: datetime.date):
     sql = ('UPDATE orders '
-           'SET number = %(number)s, price = %(price)s, price_rub = %(price_rub)s, '
+           'SET number = %(number)s, price = %(price)s, price_rub = %(price)s * usd_exchange_rate, '
            'delivery_time = %(delivery_time)s '
            'WHERE order_num = %(order_num)s'
            )
@@ -32,7 +32,6 @@ def update_order(number: int, order_number: int, price, price_rub, delivery_time
         'number': number,
         'order_num': order_number,
         'price': price,
-        'price_rub': price_rub,
         'delivery_time': delivery_time
     }
 
