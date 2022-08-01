@@ -1,10 +1,10 @@
 import datetime
 from aiogram import Bot, Dispatcher, executor, types
 from db import add_telegram_user, telegram_user_exist
-from config import API_TOKEN
+from config import TELEGRAM_API_TOKEN
 
 
-bot = Bot(token=API_TOKEN)
+bot = Bot(token=TELEGRAM_API_TOKEN)
 dp = Dispatcher(bot)
 
 
