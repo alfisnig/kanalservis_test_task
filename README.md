@@ -8,7 +8,8 @@
    > аккаунт или создать новый > KEYS > ADD KEY > CREATE NEW KEY > JSON**
 2. **SPREADSHEET_ID** - ID spreadsheet'а, который будет редактироваться. 
    > В таблицу с данным ID нужно добавить (с правом на редактирование) созданный в Google API сервисный аккаунт. 
-   > Пример ID в ссылке на таблицу: docs.google.com/spreadsheets/d/**1BkcYdJamiszwryvC_tPxWOesEXu_ieooWoFheiVDp6A**/edit#gid=0
+   > Пример ID **1BkcYdJamiszwryvC_tPxWOesEXu_ieooWoFheiVDp6A** в ссылке на таблицу: 
+   > docs.google.com/spreadsheets/d/**1BkcYdJamiszwryvC_tPxWOesEXu_ieooWoFheiVDp6A**/edit#gid=0
 3. **PG_USER**, **DB_NAME**, **PG_PASSWORD**, **PG_HOST**, **PG_PORT** - данные для подключения к СУБД PostgreSQL.
    > Данный проект создавался с PostgreSQL версии 14.4
 4. **PARSING_RANGE** - сколько строк за раз (за один запрос к API) будет парситься с указанного spreadsheet'а.
