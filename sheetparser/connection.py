@@ -1,6 +1,5 @@
-import pandas as pd
 import gspread
-from config import CREDENTIALS_FILE_PATH, SPREADSHEET_ID, PARSING_RANGE
+from config import CREDENTIALS_FILE_PATH, SPREADSHEET_ID
 
 
 def get_sheet() -> gspread.Spreadsheet:
