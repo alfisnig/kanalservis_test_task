@@ -42,7 +42,7 @@ def sheet_monitoring():
             updates.append((number, order_number, price, delivery_time))
     add_orders(new_orders)
     update_orders(updates)
-    confirm_deleted_orders(pd.Series(sheet_orders_column, dtype="int"))
+    confirm_deleted_orders(pd.Series(sheet_orders_column, dtype='int'))
 
 
 def start_sheet_monitoring():

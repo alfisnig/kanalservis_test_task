@@ -14,7 +14,7 @@ def get_db_connection(database_name: str = None) -> psycopg2.extensions.connecti
                                       database=database_name)
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     except (Exception, Error) as error:
-        print("PostgreSQL error", error)
+        print('PostgreSQL error', error)
     finally:
         return connection
 

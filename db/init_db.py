@@ -9,7 +9,7 @@ def create_db():
         with get_cursor() as cursor:
             cursor.execute(sql)
     except psycopg2.errors.DuplicateDatabase:
-        print("manga_db already exist.")
+        print(f'{DB_NAME} already exist.')
 
 
 def create_orders_table():

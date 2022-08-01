@@ -21,7 +21,7 @@ async def check_subscription(message: types.Message):
         await bot.send_message(telegram_id, 'Я уже записал тебя на рассылку!')
     else:
         add_telegram_user(telegram_id)
-        await bot.send_message(telegram_id, "Привет!\nЯ буду присылать тебе прибывшие поставки.")
+        await bot.send_message(telegram_id, 'Привет!\nЯ буду присылать тебе прибывшие поставки.')
 
 
 def start_telegram_bot():

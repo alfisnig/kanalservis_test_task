@@ -12,8 +12,8 @@ def get_usd_exchange_rate() -> float:
     request = requests.get(url)
     tree = etree.XML(request.content)
     valute_node = tree.xpath('//Valute[@ID = "R01235"]')[0]
-    nominal = float(valute_node.find('Nominal').text.replace(',', "."))
-    value = float(valute_node.find('Value').text.replace(',', "."))
+    nominal = float(valute_node.find('Nominal').text.replace(',', '.'))
+    value = float(valute_node.find('Value').text.replace(',', '.'))
     return nominal * value
 
 
