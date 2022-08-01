@@ -6,6 +6,7 @@ import requests
 from lxml import etree
 import pandas as pd
 import gspread
+import sched
 from config import PARSING_RANGE
 from connection import get_work_sheet
 from db import get_orders, add_orders, update_orders, get_all_order_nums, delete_orders, delete_all_orders
@@ -78,7 +79,7 @@ def sheet_monitoring():
     confirm_deleted_orders(pd.Series(sheet_orders_column, dtype="int"))
 
 
-def start_monitoring():
+def start_sheet_monitoring():
     while True:
         try:
             sheet_monitoring()
@@ -88,4 +89,4 @@ def start_monitoring():
 
 
 if __name__ == '__main__':
-    start_monitoring()
+    start_sheet_monitoring()
