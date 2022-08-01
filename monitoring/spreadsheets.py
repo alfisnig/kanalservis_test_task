@@ -3,6 +3,7 @@ import pandas as pd
 from sheetparser import get_sheet_data, get_usd_exchange_rate, string_to_date
 from sheetparser import get_work_sheet
 from db import delete_all_orders, get_orders, add_orders, update_orders, get_all_order_nums, delete_orders
+from config import SHEET_MONITORING_DELAY
 
 
 def confirm_deleted_orders(sheet_orders_column: pd.Series):
@@ -50,7 +51,7 @@ def start_sheet_monitoring():
             sheet_monitoring()
         except Exception as e:
             print(e)
-        time.sleep(30)
+        time.sleep(SHEET_MONITORING_DELAY)
 
 
 if __name__ == '__main__':

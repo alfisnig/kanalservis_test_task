@@ -2,6 +2,7 @@ import datetime
 import asyncio
 from db import need_to_notify_orders, get_telegram_users, order_delivery_completed
 from telegram_bot import send_notification
+from config import DELIVERY_MONITORING_DELAY
 
 
 async def delivery_monitoring():
@@ -23,7 +24,7 @@ async def start_delivery_monitoring():
             await delivery_monitoring()
         except Exception as e:
             print(e)
-        await asyncio.sleep(60)
+        await asyncio.sleep(DELIVERY_MONITORING_DELAY)
 
 
 if __name__ == '__main__':
