@@ -79,24 +79,39 @@ def delete_all_orders():
         cursor.execute(sql)
 
 
-def order_delivery_completed(order_number: int):
-    sql = ('UPDATE orders '
-           'SET delivery_completed = true'
-           'WHERE order_num = %(order_num)s'
+def order_delivery_completed(order_nums: List[int]):
+    with get_cursor(DB_NAME) as cursor:
+        for order_num in order_nums:
+            sql = ('UPDATE orders '
+                   'SET delivery_completed = true '
+                   'WHERE order_num = %(order_num)s'
+                   )
+            values = {
+                'order_num': order_num
+            }
+            cursor.execute(sql, values)
+
+
+def need_to_notify_orders(date: datetime.date) -> List[tuple]:
+    sql = ('SELECT order_num, price, price_rub, delivery_time '
+           'FROM orders '
+           'WHERE delivery_time < %(date)s '
+           '    AND delivery_completed = false'
            )
     values = {
-        'order_num': order_number
+        'date': date
     }
 
     with get_cursor(DB_NAME) as cursor:
         cursor.execute(sql, values)
+        return cursor.fetchall()
 
 
 def add_telegram_user(telegram_id: int):
     sql = ('INSERT INTO telegram_users'
            '    (telegram_id) '
            'VALUES '
-           '    %(telegram_id)s'
+           '    (%(telegram_id)s)'
            )
     values = {
         'telegram_id': telegram_id
@@ -108,7 +123,7 @@ def add_telegram_user(telegram_id: int):
 
 def telegram_user_exist(telegram_id: int) -> bool:
     sql = ('SELECT *'
-           'FROM telegram_users'
+           'FROM telegram_users '
            'WHERE telegram_id = %(telegram_id)s'
            )
     values = {
@@ -118,3 +133,12 @@ def telegram_user_exist(telegram_id: int) -> bool:
     with get_cursor(DB_NAME) as cursor:
         cursor.execute(sql, values)
         return bool(cursor.fetchone())
+
+
+def get_telegram_users() -> List[tuple]:
+    sql = ('SELECT telegram_id '
+           'FROM telegram_users')
+
+    with get_cursor(DB_NAME) as cursor:
+        cursor.execute(sql)
+        return cursor.fetchall()
