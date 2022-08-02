@@ -7,13 +7,13 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Google API
 CREDENTIALS_FILE_NAME = ''
 CREDENTIALS_FILE_PATH = os.path.join(ROOT_DIR, CREDENTIALS_FILE_NAME)
-SPREADSHEET_ID = ''
+SPREADSHEET_ID = '1BkcYdJamiszwryvC_tPxWOesEXu_ieooWoFheiVDp6A'
 
 
 # PostgreSQL
-PG_USER = ''
-DB_NAME = ''
-PG_PASSWORD = ''
+PG_USER = 'postgres'
+DB_NAME = 'test_task'
+PG_PASSWORD = '123456'
 PG_HOST = '127.0.0.1'
 PG_PORT = 5432
 
