@@ -6,6 +6,7 @@ from config import DELIVERY_MONITORING_DELAY
 
 
 async def delivery_monitoring():
+    """Рассылает пользователям телеграм уведомление о доставке"""
     today = datetime.date.today()
     orders_rows = need_to_notify_orders(today)
     telegram_users = get_telegram_users()
