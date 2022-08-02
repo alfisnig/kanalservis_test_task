@@ -1,5 +1,5 @@
 # kanalservis_test_task
-Тестовое задание для kanalservis.<br><br>
+Тестовое задание для kanalservis. Ссылка на таблицу: https://docs.google.com/spreadsheets/d/1BkcYdJamiszwryvC_tPxWOesEXu_ieooWoFheiVDp6A/edit#gid=0.<br><br>
 **КЛЮЧ ОТ GOOGLE API И ТОКЕН ДЛЯ ТЕЛЕГРАМ БОТА В РЕПОЗИТОРИЙ Я НЕ ЗАГРУЗИЛ, ПОТОМУ ЧТО ЭТО НЕ БЕЗОПАСНО 
 (к тому же в тестовом задани об этом ничего не написано)**
 
